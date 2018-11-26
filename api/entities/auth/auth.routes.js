@@ -1,7 +1,7 @@
 module.exports = (function() {
     let router = require('express').Router();
     let User = require('../users/user.model');
-    let crypto = require('crypto');
+    let tokenHandler = require('../../../utils/token');
     
     router.post('/',function(req,res){
         User.findOne({login: req.body.login, password: req.body.password}, 'login name photo_url')
@@ -11,14 +11,11 @@ module.exports = (function() {
                 res.send({message: 'Wrong credentials'});
                 return;
             }
-
-            let cipher = crypto.createCipher('aes192', 'meu password secreto');
-            let token = 'oi' //(new Date()).getTime() + "." + userId;
-            let encrypted = cipher.update(token, 'utf8', 'hex');
-
+            
             res.status(200);
             res.send({
-                token : encrypted
+                token : tokenHandler.createToken(user._id),
+                userId: user._id
             }); 
             return;
         })

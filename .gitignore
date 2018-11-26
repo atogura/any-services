@@ -1,1 +1,4 @@
 node_modules
+public/photos/profile/*.jpg
+public/photos/profile/*.png
+public/photos/profile/*.jpeg

@@ -36,6 +36,8 @@
 		}
 
 		//public routes
+		app.use('/public', express.static(__dirname + '/public'));
+
 		app.use('/', require('./api/api'));
 
 		app.all('*', function (req, res, next) {
