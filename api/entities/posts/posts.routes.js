@@ -33,7 +33,7 @@ module.exports = (function() {
             }
 
             posts.forEach( (post) => {
-                post.photo_url = photoHandler.getPostURL(post._id);
+                post._doc.photo_url = photoHandler.getPostURL(post._id);
                 post.user.photo_url = photoHandler.getProfilePhoto(post.user._id);    
             })
 
