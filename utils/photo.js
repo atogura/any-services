@@ -20,5 +20,15 @@ module.exports = {
         } catch(e) {
             return null;
         }
+    },
+    savePostPhoto : function( base64, postId, callback ) {
+        console.log(postId);
+        let imgRaw = base64.replace(/^data:image\/png;base64,/, "");
+        let filePath = path.join(__dirname, '..', 'public', 'photos', 'posts', postId + fext);
+        console.log(filePath);
+        fs.writeFile(filePath, imgRaw, 'base64', callback);
+    },
+    getPostURL : function( postId ) {
+        return '/public/photos/posts/' + postId + fext;
     }
 }

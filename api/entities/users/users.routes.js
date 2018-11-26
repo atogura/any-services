@@ -44,7 +44,7 @@ module.exports = (function() {
 
     router.get('/', function(req, res) {
         let query = User.find({}, 'login name photo_url');
-        query.sort({'createdAt': -1});
+        query.sort({'createdAt': 1});
 
         let page = req.query.page;
         let pageSize = req.query.pageSize;
