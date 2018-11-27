@@ -9,6 +9,9 @@ FROM node:8-alpine
 
 COPY --from=0 /sources /sources
 
+RUN mkdir -p /public/photos/profile
+RUN chown -R node:node /public/photos/profile
+
 WORKDIR /sources
 
 ENV REST_PORT 8085
