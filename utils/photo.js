@@ -7,7 +7,7 @@ module.exports = {
     saveProfilePhoto : function( base64, userId, callback ) {
         let imgRaw = base64.replace(/^data:image\/jpeg;base64,/, "");
         let filePath = path.join(__dirname, '..', 'public', 'photos', 'profile', userId + fext);
-        fs.writeFileSync(filePath, imgRaw, 'base64');
+        fs.writeFile(filePath, imgRaw, 'base64', callback);
     },
     getProfilePhoto : function( userId ) {
         let filePath = path.join(__dirname, '..', 'public', 'photos', 'profile', userId + fext);
