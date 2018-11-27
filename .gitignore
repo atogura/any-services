@@ -2,3 +2,6 @@ node_modules
 public/photos/profile/*.jpg
 public/photos/profile/*.png
 public/photos/profile/*.jpeg
+public/photos/posts/*.jpg
+public/photos/posts/*.png
+public/photos/posts/*.jpeg
