@@ -6,7 +6,7 @@ module.exports = (function() {
     let photoHandler = require('../../../utils/photo');
     
     router.get('/', function(req,res) {
-        let mine = req.query.mine;
+        let user = req.query.userId;
         let page = req.query.page;
         let pageSize = req.query.pageSize;
 
@@ -19,7 +19,10 @@ module.exports = (function() {
             return;
         }
 
-        let query = Post.find({}, 'subtitle location user');
+        let filter = {};
+        if( user ) filter.user = user;
+
+        let query = Post.find(filter, 'subtitle location user');
         query.sort({'createdAt': -1});
         query.populate('user', 'name photo_url');
         query.skip((page-1)*pageSize*1);
