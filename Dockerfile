@@ -12,6 +12,9 @@ COPY --from=0 /sources /sources
 RUN mkdir -p /sources/public/photos/profile
 RUN chown -R node:node /sources/public/photos/profile
 
+RUN mkdir -p /sources/public/photos/posts
+RUN chown -R node:node /sources/public/photos/posts
+
 WORKDIR /sources
 
 ENV REST_PORT 8085
