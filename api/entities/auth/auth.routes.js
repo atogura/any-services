@@ -15,7 +15,8 @@ module.exports = (function() {
             res.status(200);
             res.send({
                 token : tokenHandler.createToken(user._id),
-                userId: user._id
+                userId: user._id,
+                name: user.name
             }); 
             return;
         })
