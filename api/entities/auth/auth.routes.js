@@ -2,6 +2,7 @@ module.exports = (function() {
     let router = require('express').Router();
     let User = require('../users/user.model');
     let tokenHandler = require('../../../utils/token');
+    let photoHandler = require('../../../utils/photo');
     
     router.post('/',function(req,res){
         User.findOne({login: req.body.login, password: req.body.password}, 'login name photo_url')
@@ -16,7 +17,8 @@ module.exports = (function() {
             res.send({
                 token : tokenHandler.createToken(user._id),
                 userId: user._id,
-                name: user.name
+                name: user.name,
+                photo_url: photoHandler.getProfilePhoto(user._id)
             }); 
             return;
         })
