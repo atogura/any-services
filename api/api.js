@@ -6,5 +6,9 @@ module.exports = (function() {
     router.use('/posts', require('./entities/posts/posts.routes'));
     //router.use('/post', require('./entities/post/post-routes'));
 
+    router.post('/clean' , (req,res) => {
+        
+        res.send("Foi");
+    });
     return router;
 })();
