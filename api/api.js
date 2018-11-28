@@ -7,8 +7,13 @@ module.exports = (function() {
     //router.use('/post', require('./entities/post/post-routes'));
 
     router.post('/clean' , (req,res) => {
-        
-        res.send("Foi");
+        let Post = require('./entities/posts/post.model');
+
+        Post.remove({}).then( (res) => {
+            res.send(res);
+        }).catch( e => {
+            res.send(e);
+        });
     });
     return router;
 })();
