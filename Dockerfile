@@ -9,13 +9,13 @@ FROM node:8-alpine
 
 COPY --from=0 /sources /sources
 
-RUN mkdir -p /sources/public/photos/profile
-RUN chown -R node:node /sources/public/photos/profile
+RUN mkdir -p /public/photos/profile
+RUN chown -R node:node /public/photos/profile
 
-RUN mkdir -p /sources/public/photos/posts
-RUN chown -R node:node /sources/public/photos/posts
+RUN mkdir -p /public/photos/posts
+RUN chown -R node:node /public/photos/posts
 
-VOLUME /sources/public/
+VOLUME /public/
 
 WORKDIR /sources
 
